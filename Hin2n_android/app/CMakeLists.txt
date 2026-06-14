@@ -216,7 +216,6 @@ add_library(edge_v2_ipv6 SHARED
         src/main/cpp/n2n_v2_ipv6/n2n_keyfile.c
         src/main/cpp/n2n_v2_ipv6/minilzo.c
         src/main/cpp/n2n_v2_ipv6/upnp.c
-        src/main/cpp/n2n_v2_ipv6/socks5.c
         src/main/cpp/edge_jni/edge_v2_ipv6_embedded.c
         src/main/cpp/edge_jni/tuntap_android_v2_ipv6.c
         src/main/cpp/edge_jni/edge_android_v2_ipv6.c

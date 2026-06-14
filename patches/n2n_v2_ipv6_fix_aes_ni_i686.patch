@@ -1,0 +1,15 @@
+diff --git a/bundles/n2n_v2_ipv6/aes.c b/bundles/n2n_v2_ipv6/aes.c
+index 5987351..9c3089f 100644
+--- a/bundles/n2n_v2_ipv6/aes.c
++++ b/bundles/n2n_v2_ipv6/aes.c
+@@ -7,8 +7,10 @@
+ #include <stdlib.h>
+ 
+ #if (defined(__x86_64__) || defined(__i386__) || defined(_M_IX86) || defined(_M_X64))
++#if defined(__AES__) || defined(_MSC_VER)
+ #define HAS_X86_AESNI 1
+ #endif
++#endif
+ 
+ #if HAS_X86_AESNI
+ #include <wmmintrin.h>
