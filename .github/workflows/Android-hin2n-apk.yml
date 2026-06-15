@@ -52,9 +52,9 @@ jobs:
          export PATH=$JAVA_HOME/bin:$JRE_HOME/bin:$PATH
          export ANDROID_HOME=/opt/gcc/Android/sdk
          export ANDROID_NDK_HOME=$ANDROID_HOME/ndk-bundle
-         rm -rf app/Hin2n.jks
          if [ -n "${{ secrets.KEYSTORE_PASSWORD }}" ] && [ -n "${{ secrets.KEYSTORE_BASE64 }}" ]; then
            echo "使用仓库密钥签名"
+           rm -f app/Hin2n.jks
            echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 -d > app/Hin2n.jks
            export KEYSTORE_FILE=Hin2n.jks
            export KEYSTORE_PASSWORD="${{ secrets.KEYSTORE_PASSWORD }}"
@@ -66,6 +66,12 @@ jobs:
            if [ -z "$KEY_PASSWORD" ]; then
              export KEY_PASSWORD="$KEYSTORE_PASSWORD"
            fi
+         elif [ -f "app/Hin2n.jks" ]; then
+           echo "使用代码库中固定的密钥签名"
+           export KEYSTORE_FILE=Hin2n.jks
+           export KEYSTORE_PASSWORD=My-Hin2n
+           export KEY_ALIAS=Hin2n
+           export KEY_PASSWORD=My-Hin2n
          else
            echo "生成临时密钥签名"
            export KEYSTORE_FILE=Hin2n.jks
