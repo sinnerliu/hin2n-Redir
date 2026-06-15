@@ -57,3 +57,4 @@ dkms.conf
 *.iml
 .idea/
 local.properties
+.jks
