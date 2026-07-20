@@ -237,7 +237,7 @@ int start_edge_v2_ipv6(n2n_edge_status_t *status) {
         argv[argc++] = ip_arg;
     }
     if (cmd->local_ip[0] != '\0') {
-        argv[argc++] = "-A";
+        argv[argc++] = "-y";
         argv[argc++] = cmd->local_ip;
     }
     argv[argc++] = "-c";
@@ -247,7 +247,7 @@ int start_edge_v2_ipv6(n2n_edge_status_t *status) {
     } else if (cmd->re_resolve_supernode_ip) {
         argv[argc++] = "-4";
     }
-    argv[argc++] = "-B";
+    argv[argc++] = "-A";
     argv[argc++] = (char *)encryption_mode_arg(cmd->encryption_mode, cmd->enc_key);
     if (cmd->enc_key && cmd->enc_key[0]) {
         argv[argc++] = "-k";

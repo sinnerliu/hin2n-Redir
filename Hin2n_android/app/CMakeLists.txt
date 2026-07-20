@@ -195,7 +195,7 @@ target_link_libraries(edge_v3 ${OPENSSL_LIBRARIES})
 file(STRINGS "${CMAKE_CURRENT_SOURCE_DIR}/src/main/cpp/n2n_v2_ipv6/CMakeLists.txt" N2N_V2_IPV6_VERSION_LINE REGEX "^set\\(N2N_VERSION[ \t]+.*\\)")
 string(REGEX REPLACE "^set\\(N2N_VERSION[ \t]+\"?([^\"\\) ]+)\"?\\).*" "\\1" N2N_V2_IPV6_VERSION "${N2N_V2_IPV6_VERSION_LINE}")
 if(NOT N2N_V2_IPV6_VERSION)
-message(FATAL_ERROR "Failed to read v2-ipv6 N2N_VERSION from src/main/cpp/n2n_v2_ipv6/CMakeLists.txt")
+    set(N2N_V2_IPV6_VERSION "unknown")
 endif()
 
 add_library(edge_v2_ipv6 SHARED
@@ -216,6 +216,7 @@ add_library(edge_v2_ipv6 SHARED
         src/main/cpp/n2n_v2_ipv6/n2n_keyfile.c
         src/main/cpp/n2n_v2_ipv6/minilzo.c
         src/main/cpp/n2n_v2_ipv6/upnp.c
+        src/main/cpp/n2n_v2_ipv6/socks5.c
         src/main/cpp/edge_jni/edge_v2_ipv6_embedded.c
         src/main/cpp/edge_jni/tuntap_android_v2_ipv6.c
         src/main/cpp/edge_jni/edge_android_v2_ipv6.c
